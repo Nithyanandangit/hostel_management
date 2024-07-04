@@ -1,0 +1,15 @@
+if(isset($_POST['submit']))
+{
+$regno=$_POST['regno'];
+$fname=$_POST['fname'];
+$mname=$_POST['mname'];
+$lname=$_POST['lname'];
+$gender=$_POST['gender'];
+$contactno=$_POST['contact'];
+$emailid=$_POST['email'];
+$password=$_POST['password'];
+$query="insert into  userregistration(regNo,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
+$stmt = $mysqli->prepare($query);
+$rc=$stmt->bind_param('sssssiss',$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
+$stmt->execute();
+echo"<script>alert('Student Succssfully register');</script>";
